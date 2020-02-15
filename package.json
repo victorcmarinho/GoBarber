@@ -1,0 +1,33 @@
+{
+  "name": "yarn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "description": "Servico de Agendamento",
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.7.0",
+    "nodemon": "^2.0.2",
+    "sucrase": "^3.12.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "dev": "nodemon --inspect src/server.ts"
+  },
+  "repository": "git+https://github.com/victorcmarinho/GoBaer.git",
+  "keywords": [
+    "NodeJS",
+    "Node",
+    "Javascript",
+    "Typescript"
+  ],
+  "author": "Victor Marinho",
+  "bugs": {
+    "url": "https://github.com/victorcmarinho/GoBaer/issues"
+  },
+  "homepage": "https://github.com/victorcmarinho/GoBaer#readme"
+}
