@@ -1,4 +1,6 @@
-const configOptions = {
+import { Options } from "sequelize/types";
+
+const configOptions: Options = {
     dialect: 'postgres',
     host: 'localhost',
     username: 'postgres',

@@ -1,6 +1,8 @@
 import Sequelize, { Model } from "sequelize";
 export default class User extends Model {
-    static init(sequelize) {
+
+    static sequelize: Sequelize.Sequelize;
+    static init(sequelize): void {
         super.init(
             {
                 name: Sequelize.STRING,

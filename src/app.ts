@@ -3,7 +3,7 @@ import routes from './routes';
 import './database';
 
 class App {
-    _serve;
+    private _serve: express.Application;
 
     constructor() {
       this._serve = express();
@@ -11,15 +11,15 @@ class App {
       this.routes();
     }
 
-    get server() {
+    get server(): express.Application {
       return this._serve;
     }
 
-    middlewares(){
+    middlewares(): void {
       this._serve.use(express.json());
     }
 
-    routes(){
+    routes(): void {
       this._serve.use(routes);
     }
 }
