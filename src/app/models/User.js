@@ -1,9 +1,6 @@
-import Sequelize, { Model } from 'sequelize';
-import { Model as ModelTS } from 'sequelize-typescript';
-
-export default class User extends ModelTS {
+import Sequelize, { Model } from "sequelize";
+export default class User extends Model {
     static init(sequelize) {
-
         super.init(
             {
                 name: Sequelize.STRING,

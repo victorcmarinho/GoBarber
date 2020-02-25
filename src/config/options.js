@@ -1,12 +1,13 @@
-module.exports = {
+const configOptions = {
     dialect: 'postgres',
     host: 'localhost',
     username: 'postgres',
     password: 'docker',
     database: 'gobarber',
-    difine: {
+    define: {
         timestamps: true,
-        underscored: true,
-        underscoredAll: true
+        underscored: true
     }
 };
+
+export default configOptions;
