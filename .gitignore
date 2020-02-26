@@ -2,6 +2,10 @@
 /.vscode/**/*
 /.vscode/**
 /.vscode/
+/.idea/**/*
+/.idea/*
+/.idea
+
 
 yarn.lock
 
