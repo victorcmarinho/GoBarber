@@ -1,5 +1,3 @@
-import  Sequelize  from "sequelize/types";
-
 export interface UserInterface {
     name: string,
     email: string,
