@@ -1,7 +1,8 @@
 import User from '../models/User';
 import File from '../models/File';
+import { Response, Request } from 'express';
 class ProviderController {
-    async index(req, res){
+    async index(req: Request, res: Response){
         const providers = await User.findAll({
             where: {provider: true},
             attributes: ['id','name', 'email', 'avatar_id'],

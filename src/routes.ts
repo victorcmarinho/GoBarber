@@ -8,6 +8,7 @@ import SessionController from './app/controllers/SessionController';
 import authMiddleware from './app/middlewares/auth.middleware';
 import fileController from './app/controllers/fileController';
 import ProviderController from './app/controllers/ProviderController';
+import AppointmentController from './app/controllers/AppointmentController';
 
 declare global {
     namespace Express {
@@ -28,5 +29,7 @@ routes.post('/sessions', SessionController.store);
 routes.post('/files', authMiddleware, upload.single('file'), fileController.store);
 
 routes.get('/providers',authMiddleware, ProviderController.index);
+
+routes.post('/appointments', authMiddleware, AppointmentController.store);
 
 export default routes;
