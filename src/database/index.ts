@@ -2,8 +2,9 @@
 import  configOptions  from "../config/options"
 import User from "../app/models/User";
 import { Sequelize } from "sequelize";
+import File from "../app/models/File";
 
-const models = [User];
+const models = [User, File];
 class Database {
     private connection: Sequelize;
     constructor(){

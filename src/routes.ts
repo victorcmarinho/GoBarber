@@ -24,6 +24,6 @@ routes.put('/users', authMiddleware, UserControler.update);
 
 routes.post('/sessions', SessionController.store);
 
-routes.post('/files',fileController.store, authMiddleware, upload.single('file'))
+routes.post('/files', authMiddleware, upload.single('file'), fileController.store)
 
 export default routes;
