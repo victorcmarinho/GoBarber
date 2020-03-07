@@ -5,6 +5,7 @@ export default class User extends Model<UserInterface> {
     id: string;
     name: string;
     email: string;
+    avatar_id: number;
     password_hash: string;
     provider: boolean;
     created_at: Date;
@@ -50,6 +51,10 @@ export default class User extends Model<UserInterface> {
             provider: this.provider
         }
     }
+
+    static associate(models) {
+        this.belongsTo(models.File, { foreignKey: 'avatar_id'});
+    }
 }
 
 export interface UserInterface {
@@ -58,6 +63,7 @@ export interface UserInterface {
     email: string,
     password_hash: string,
     provider?: boolean,
+    avater_id?: number,
     created_at?: Date,
     updated_at?: Date
 }

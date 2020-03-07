@@ -27,6 +27,8 @@ export default class File extends Model<FileInterface> {
             path: this.path
         }
     }
+
+    static associate(){}
 }
 
 export interface FileInterface {
