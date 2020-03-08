@@ -38,6 +38,7 @@ export default class Appointment extends Model<AppointmentInterface> {
 export interface AppointmentInterface {
     id?: string,
     date: Date,
+    provide_id?: number,
     canceled_at: Date,
     created_at?: Date,
     updated_at?: Date
