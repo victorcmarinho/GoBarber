@@ -7,6 +7,7 @@ import Appointment from '../models/Appointment';
 import Notification from '../schemas/Notification';
 import  ptBR  from "date-fns/locale/pt-BR";
 import MailLib from '../../lib/Mail';
+import Mail from "../../lib/Mail";
 class AppointmentController {
 
     async index(req: Request, res: Response){
@@ -121,6 +122,11 @@ class AppointmentController {
                     model: User,
                     as: 'provider',
                     attributes: ['name', 'email']
+                },
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['name']
                 }
             ]
         });
@@ -136,10 +142,19 @@ class AppointmentController {
 
         await appointment.save();
 
-        await MailLib.sendMail({
+        await Mail.sendMail({
             to: `${appointment?.provider?.name} <${appointment?.provider?.email}>`,
             subject: 'Agendamento cancelado',
-            text: 'Você tem um novo cancelamento'
+            template: 'cancelations',
+            context: {
+                provider: appointment.provider.name,
+                user: appointment.user.name,
+                date: format(
+                    appointment.date,
+                    "'dia' dd 'de' MMMM', às' H:mm'h'",
+                    {locale: ptBR}
+                )
+            }
         });
 
         return res.json(appointment);

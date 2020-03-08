@@ -8,6 +8,7 @@ export default class Appointment extends Model<AppointmentInterface> {
     user_id: string;
 
     provider: UserInterface;
+    user: UserInterface;
 
     static sequelize: Sequelize.Sequelize;
     static init(sequelize) {
