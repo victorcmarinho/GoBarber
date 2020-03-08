@@ -10,6 +10,7 @@ import fileController from './app/controllers/fileController';
 import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 declare global {
     namespace Express {
@@ -36,5 +37,7 @@ routes.post('/appointments', authMiddleware, AppointmentController.store);
 routes.get('/appointments', authMiddleware, AppointmentController.index);
 
 routes.get('/schedule', authMiddleware, ScheduleController.index);
+
+routes.get('/notifications',authMiddleware, NotificationController.index);
 
 export default routes;
