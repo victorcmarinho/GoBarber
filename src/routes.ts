@@ -9,6 +9,7 @@ import authMiddleware from './app/middlewares/auth.middleware';
 import fileController from './app/controllers/fileController';
 import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
+import ScheduleController from './app/controllers/ScheduleController';
 
 declare global {
     namespace Express {
@@ -33,5 +34,7 @@ routes.get('/providers',authMiddleware, ProviderController.index);
 routes.post('/appointments', authMiddleware, AppointmentController.store);
 
 routes.get('/appointments', authMiddleware, AppointmentController.index);
+
+routes.get('/schedule', authMiddleware, ScheduleController.index);
 
 export default routes;
