@@ -11,6 +11,7 @@ import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
+import AvailableController from './app/controllers/AvailableController';
 
 declare global {
     namespace Express {
@@ -31,6 +32,9 @@ routes.post('/sessions', SessionController.store);
 routes.post('/files', authMiddleware, upload.single('file'), fileController.store);
 
 routes.get('/providers',authMiddleware, ProviderController.index);
+
+routes.get('/providers/:providerId/available',authMiddleware, AvailableController.index);
+
 
 routes.post('/appointments', authMiddleware, AppointmentController.store);
 

@@ -84,5 +84,5 @@ This project was developed at the [RocketSeat GoStack Bootcamp](https://rocketse
 ---
 
 <p align="center">
-  Made with ♥ by <a href="https://www.linkedin.com/in/victorcmarinho">Victor Marinho</a>
+  Made with by <a href="https://www.linkedin.com/in/victorcmarinho">Victor Marinho</a>
 </p>
