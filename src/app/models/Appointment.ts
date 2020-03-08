@@ -4,6 +4,7 @@ export default class Appointment extends Model<AppointmentInterface> {
     id: string;
     date: Date;
     canceled_at: Date;
+    user_id: string;
 
     static sequelize: Sequelize.Sequelize;
     static init(sequelize) {
@@ -38,6 +39,7 @@ export default class Appointment extends Model<AppointmentInterface> {
 export interface AppointmentInterface {
     id?: string,
     date: Date,
+    user_id?: string,
     provide_id?: number,
     canceled_at: Date,
     created_at?: Date,
