@@ -1,7 +1,11 @@
+import * as Sentry from '@sentry/node';
 import express from 'express';
-import routes from './routes';
-import './database';
+import 'express-async-errors';
 import path from 'path';
+import Youch from 'youch';
+import sentryConfig from './config/sentry';
+import './database';
+import routes from './routes';
 
 class App {
     private _serve: express.Application;
@@ -9,7 +13,10 @@ class App {
     constructor() {
       this._serve = express();
       this.middlewares();
+      
+      Sentry.init(sentryConfig);
       this.routes();
+      this.exceptionHandler();
     }
 
     get server(): express.Application {
@@ -17,12 +24,22 @@ class App {
     }
 
     middlewares(): void {
+      this._serve.use(Sentry.Handlers.requestHandler());
       this._serve.use(express.json());
       this._serve.use('/files', express.static(path.resolve(__dirname, '..', 'tmp','uploads' )));
     }
 
     routes(): void {
       this._serve.use(routes);
+      this._serve.use(Sentry.Handlers.errorHandler());
+    }
+
+    exceptionHandler() {
+      this._serve.use(async(err, req, res, next) => {
+          const errors = await new Youch(err,req).toJSON();
+          return res.status(500).json(errors);
+        }
+      )
     }
 }
 
