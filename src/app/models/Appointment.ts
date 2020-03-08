@@ -1,5 +1,6 @@
 import Sequelize, { Model } from "sequelize";
 import { UserInterface } from "./User";
+import { isBefore, subHours } from "date-fns";
 
 export default class Appointment extends Model<AppointmentInterface> {
     id: string;
@@ -17,6 +18,18 @@ export default class Appointment extends Model<AppointmentInterface> {
             {
                 date: Sequelize.DATE,
                 canceled_at: Sequelize.DATE,
+                past: {
+                    type: Sequelize.VIRTUAL,
+                    get() {
+                        return isBefore(this.date, new Date());
+                    }
+                },
+                cancelable: {
+                    type: Sequelize.VIRTUAL,
+                    get() {
+                        return isBefore(new Date, subHours(this.date,2))
+                    }
+                }
             },
             {
                 sequelize
