@@ -1,10 +1,13 @@
 import Sequelize, { Model } from "sequelize";
+import { UserInterface } from "./User";
 
 export default class Appointment extends Model<AppointmentInterface> {
     id: string;
     date: Date;
     canceled_at: Date;
     user_id: string;
+
+    provider: UserInterface;
 
     static sequelize: Sequelize.Sequelize;
     static init(sequelize) {
