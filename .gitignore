@@ -5,7 +5,7 @@
 /.idea/**/*
 /.idea/*
 /.idea
-
+.env
 
 yarn.lock
 
