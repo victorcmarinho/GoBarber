@@ -9,7 +9,8 @@ export default class User extends Model<UserInterface> {
     password_hash: string;
     provider: boolean;
     created_at: Date;
-    updated_at: Date
+    updated_at: Date;
+    avatar: any;
 
     static sequelize: Sequelize.Sequelize;
     static init(sequelize) {

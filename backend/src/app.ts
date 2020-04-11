@@ -7,6 +7,7 @@ import Youch from 'youch';
 import sentryConfig from './config/sentry';
 import './database';
 import routes from './routes';
+import cors from 'cors';
 
 class App {
     private _serve: express.Application;
@@ -26,6 +27,7 @@ class App {
 
     middlewares(): void {
       this._serve.use(Sentry.Handlers.requestHandler());
+      this._serve.use(cors());
       this._serve.use(express.json());
       this._serve.use('/files', express.static(path.resolve(__dirname, '..', 'tmp','uploads' )));
     }
